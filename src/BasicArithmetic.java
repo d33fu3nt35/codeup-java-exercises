@@ -5,6 +5,7 @@ import java.util.Scanner;
  */
 public class BasicArithmetic {
     public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
         double min = 1;
         double max = 15;
         System.out.println("ADDITION");
@@ -74,6 +75,19 @@ public class BasicArithmetic {
         System.out.println(modanswer);
 
 
+        System.out.println("FACTORIAL");
+//        FACTORIAL
+        String Yes;
+        do {
+            double factorialmath;
+            x = getdouble(min, max);
+            factorialmath = factorial(x);
+            System.out.println(factorialmath);
+            System.out.println("Do you want to continue? Yes, or No?");
+            Yes = scan.nextLine();
+        } while (Yes.equalsIgnoreCase("Yes"));
+
+
     }
 
     public static double getdouble(double min, double max) {
@@ -82,7 +96,7 @@ public class BasicArithmetic {
         double userInput = scan.nextDouble();
         if (userInput >= min && userInput <= max) {
             return userInput;
-        } else{
+        } else {
             System.out.println("Invalid number, try again.");
             return getdouble(min, max);
         }
@@ -106,6 +120,14 @@ public class BasicArithmetic {
             multianswer = multianswer + x;
         }
         return multianswer;
+    }
+
+    public static double factorial(double y) {
+        double factorialmath = 1;
+        for (int counter = 1; counter <= y; counter++) {
+            factorialmath = factorialmath * counter;
+        }
+        return factorialmath;
     }
 
     public static double multiplicationrecursion(double x, double y) {
