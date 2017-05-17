@@ -88,6 +88,19 @@ public class BasicArithmetic {
         } while (Yes.equalsIgnoreCase("Yes"));
 
 
+        System.out.println("DICE GAME");
+//        DICE GAME
+        System.out.println("Do you want to roll some dice? Yes / No");
+        Yes = scan.nextLine();
+        while (Yes.equalsIgnoreCase("Yes")) {
+            int dicegame;
+            dicegame = dicesides();
+            System.out.println(dicegame(1, dicegame));
+            System.out.println(dicegame(1, dicegame));
+            System.out.println("Do you want to roll again? Yes / No");
+            Yes = scan.nextLine();
+        } // while (Yes.equalsIgnoreCase("Yes"))
+
     }
 
     public static double getdouble(double min, double max) {
@@ -143,5 +156,22 @@ public class BasicArithmetic {
 
     public static double modulus(double x, double y) {
         return x % y;
+    }
+
+    public static int dicegame(int min, int max) {
+        int dice = (int) (Math.round(Math.random() * (max - min)) + min);
+        return dice;
+    }
+
+    public static int dicesides() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("How many sides does your dice have?");
+        int userInput = scan.nextInt();
+        if (userInput >= 1) {
+            return userInput;
+        } else {
+            System.out.println("Invalid number, try again.");
+            return dicesides();
+        }
     }
 }
