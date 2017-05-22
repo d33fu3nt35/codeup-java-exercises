@@ -5,11 +5,16 @@ package InheritanceAndPolymorphism;
  */
 public class ShapesTestInterfaces {
     public static void main(String[] args) {
-        Measurable myShape = new Rectangle(5.0, 5.0);
-        System.out.println(myShape.getArea() + " " + myShape.getPerimeter());
 
+        System.out.println("-- Rectangle --");
+        Measurable myShape = new Rectangle(5.0, 5.0);
+        System.out.println("Area: " + myShape.getArea() + "\n" + "Perimeter: " + myShape.getPerimeter());
+
+
+
+        System.out.println("-- Square --");
         Measurable otherShape= new Square(10.0, 10.0);
-        System.out.println(otherShape.getArea() + " " + otherShape.getPerimeter());
+        System.out.println("Area: " + otherShape.getArea() + "\n" + "Perimeter: " + otherShape.getPerimeter());
 
 
     }
