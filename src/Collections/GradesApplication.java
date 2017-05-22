@@ -37,22 +37,27 @@ public class GradesApplication {
         students.put("syee4sev", Evan);
         students.put("docalvi", Emilio);
 
-        do{System.out.println("Here are the github usernames of our students:\n");
+        do {
+            System.out.println("Here are the github usernames of our students:\n");
 
-        students.forEach((key, value)->{
-            System.out.print(" | " + key + " | ");
-        });
+            students.forEach((key, value) -> {
+                System.out.print(" | " + key + " | ");
+            });
 
-        System.out.println("\n \nWhat student would you like to see more information on?\n");
+            System.out.println("\n \nWhat student would you like to see more information on? Or type View All! \n");
 
-        Scanner optionScan = new Scanner(System.in);
-        String input = optionScan.next();
-        if(students.get(input) == null){
-            System.out.println("Sorry, no student found with the github username of " + input + "\n");
-        }else{
-            Student student = students.get(input);
-            System.out.println("Name: " + student.getName() + " Github Username: " + input + "\n" + "Current Average: " +student.getGradeAverage() + "\n");
-        }
+            Scanner optionScan = new Scanner(System.in);
+            String input = optionScan.nextLine();
+            if (input.equalsIgnoreCase("View All")) {
+                students.forEach((key, value) -> {
+                    System.out.println(" | " + key + " | " + value.getGrades() + "\n");
+                });
+            } else if (students.get(input) == null) {
+                System.out.println("Sorry, no student found with the Github username of " + input + "\n");
+            } else {
+                Student student = students.get(input);
+                System.out.println("Name: " + student.getName() + "\n" + "Github Username: " + input + "\n" + "Current Average: " + student.getGradeAverage() + "\n" + "Grades: " + student.getGrades());
+            }
 
             System.out.println("Would you like to see another student? Y/N");
             String again = optionScan.next();
@@ -60,9 +65,10 @@ public class GradesApplication {
                 System.out.println("Goodbye, and have a wonderful day!");
                 break;
             }
-        }while(true);
 
+        } while (true);
     }
+}
 
 
 //    Scanner optionScan = new Scanner(System.in);
@@ -76,4 +82,3 @@ public class GradesApplication {
 //        int input = optionScan.nextInt();
 //
 //        }
-    }

@@ -29,6 +29,10 @@ public class Student {
         return name;
     }
 
+    public List getGrades(){
+        return grades;
+    }
+
     public void addGrade(int grade){
         grades.add(grade);
     }
