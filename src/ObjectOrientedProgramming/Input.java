@@ -1,7 +1,5 @@
 package ObjectOrientedProgramming;
 
-import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
-
 import java.util.Scanner;
 
 /**
@@ -29,10 +27,16 @@ public class Input {
     }
 
     public int getInt() {
-        return scan.nextInt();
+        try {
+            return Integer.valueOf(this.getString());
+        } catch(NumberFormatException e) {
+            System.out.println("You didn't enter an Integer!\nEnter Integer Here: ");
+            return getInt();
+        }
     }
 
     public int getInt(int min, int max) {
+
         int num = this.getInt();
 
         if (num >= min && num <= max) {
@@ -58,6 +62,13 @@ public class Input {
         System.out.println(num + " number out of range!");
         return getDouble(min, max);
 
+    }
+
+    public static void main(String[] cheese) {
+        Input input = new Input();
+        System.out.println("Enter a number: ");
+        int userInput = input.getInt();
+        System.out.println("You entered " + userInput + "!");
     }
 
 }
