@@ -36,14 +36,22 @@ public class Input {
     }
 
     public int getInt(int min, int max) {
+        int num = 0;
+        try{
+            String possibleNumber = this.getString();
+            num = Integer.valueOf(possibleNumber);
+        }catch (NumberFormatException e) {
+            System.out.println("You didn't enter an Integer!\nEnter Integer Here Between " + min + " & " + max + ": ");
+            return getInt(min, max);
+        }
 
-        int num = this.getInt();
+//        int num = this.getInt();
 
         if (num >= min && num <= max) {
             return num;
         }
 
-        System.out.println(num + " number out of range!");
+        System.out.println(num + " is out of range!");
         return getInt(min, max);
 
     }
@@ -59,15 +67,15 @@ public class Input {
             return num;
         }
 
-        System.out.println(num + " number out of range!");
+        System.out.println(num + " is out of range!");
         return getDouble(min, max);
 
     }
 
     public static void main(String[] cheese) {
         Input input = new Input();
-        System.out.println("Enter a number: ");
-        int userInput = input.getInt();
+        System.out.println("Enter A Number Between 20 & 30: ");
+        int userInput = input.getInt(20, 30);
         System.out.println("You entered " + userInput + "!");
     }
 
